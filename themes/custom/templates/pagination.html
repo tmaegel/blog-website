@@ -1,14 +1,23 @@
 {% if DEFAULT_PAGINATION %} {% set first_page = articles_paginator.page(1) %} {% set last_page =
 articles_paginator.page(articles_paginator.num_pages) %}
-<nav id="pagination">
-  <div class="d-flex justify-content-center">
-    {% if articles_page.has_previous() %}
-    <a class="pagination-button" href="{{ SITEURL }}/{{ articles_previous_page.url }}"
-      ><i class="bi bi-arrow-left"></i
-    ></a>
-    {% endif %} {% if articles_page.has_next() %}
-    <a class="pagination-button" href="{{ SITEURL }}/{{ articles_next_page.url }}"><i class="bi bi-arrow-right"></i></a>
-    {% endif %}
+<div class="grid">
+  <div class="align-right">
+    <a
+      href="{{ SITEURL }}/{{ articles_previous_page.url }}"
+      role="button"
+      class="secondary outline {% if not articles_page.has_previous() %}disabled{% endif %}"
+    >
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+    </a>
   </div>
-</nav>
+  <div class="align-left">
+    <a
+      href="{{ SITEURL }}/{{ articles_next_page.url }}"
+      role="button"
+      class="secondary outline {% if not articles_page.has_next() %}disabled{% endif %}"
+    >
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
 {% endif %}
