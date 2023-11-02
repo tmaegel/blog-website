@@ -1,13 +1,12 @@
 PY?=
 PELICAN?=pelican
-PELICANOPTS=--extra-settings SITEURL='"/"'
+PELICANOPTS=--extra-settings SITEURL='"http://localhost:8000"'
 
 BASEDIR=$(CURDIR)
 INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
-
 
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)

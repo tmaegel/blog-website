@@ -10,7 +10,7 @@
     <header>
         {% import 'translations.html' as translations with context %}
         {{ translations.translations_for(page) }}
-        <h2>{{ page.title }}</h2>
+        <h3>{{ page.title }}</h3>
     </header>
     <section>
         {{ page.content }}

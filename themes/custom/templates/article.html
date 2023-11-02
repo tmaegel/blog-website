@@ -13,12 +13,12 @@
         {% import 'translations.html' as translations with context %}
         {{ translations.translations_for(article) }}
         <div class="headings">
-            <h2>{{ article.title }}</h2>
-            <h3>
+            <h3>{{ article.title }}</h3>
+            <h4>
                 <time datetime="{{ article.date.isoformat() }}">
                     {{ article.date.strftime("%A, %d. %B %Y") }}
                 </time>
-            </h3>
+            </h4>
         </div>
     </header>
     <section>
