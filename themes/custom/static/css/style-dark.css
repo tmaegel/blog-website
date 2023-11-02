@@ -1,0 +1,297 @@
+:root {
+  --default-bg: #1e222a;
+  --bar-bg: #282c34;
+  --code-bg: #282c34;
+  --default-fg: #abb2bf;
+  --active-fg: #ffffff;
+  --border-fg: #3c4250;
+  --select-bg: #3c4250;
+  --big-font-size: 28px;
+  --default-font-size: 20px;
+  --small-font-size: 16px;
+}
+
+/**
+ * general
+ **/
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: var(--default-fg);
+  background-color: var(--default-bg);
+  font-size: var(--default-font-size);
+  line-height: 1.6;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1024px;
+}
+
+main {
+  padding-top: 75px;
+  padding-bottom: 150px; /* spacing to footer */
+}
+
+/**
+ * footer
+ **/
+
+footer {
+  background-color: var(--bar-bg);
+  margin: 0;
+  padding: 24px 0;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.social-icon {
+  color: var(--default-fg);
+  margin: 0 8px;
+}
+
+.social-icon:visited {
+  color: var(--default-fg);
+}
+
+.social-icon:hover {
+  color: var(--active-fg);
+}
+
+#social {
+  font-size: var(--default-font-size);
+  margin: 8px 0;
+  text-align: center;
+}
+
+#copyright {
+  font-size: var(--small-font-size);
+  margin: 8px 0;
+  text-align: center;
+}
+
+/**
+ * pagination
+ **/
+
+#pagination {
+  padding-top: 75px;
+}
+
+.pagination-button:link,
+.pagination-button:visited,
+.pagination-button:hover {
+  padding: 16px 24px !important;
+  margin-right: 8px;
+}
+
+/**
+ * heading
+ **/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: var(--big-font-size);
+}
+
+h2 {
+  font-size: 26px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 22px;
+}
+
+h5 {
+  font-size: 21px;
+}
+
+h6 {
+  font-size: 20px;
+}
+
+hr {
+  color: var(--border-fg);
+  opacity: 0.25;
+}
+
+p {
+  margin: 16px 0;
+}
+
+a:link {
+  text-decoration: none;
+  color: var(--default-fg);
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:link:not(.nav-link):not(.article-link):not(.social-icon) {
+  color: var(--default-fg);
+  background: var(--code-bg);
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+a:visited:not(.nav-link):not(.article-link):not(.social-icon) {
+  color: var(--default-fg);
+}
+
+a:hover:not(.nav-link):not(.article-link):not(.social-icon) {
+  color: var(--active-fg);
+}
+
+blockquote {
+  border-left: 4px solid var(--border-fg);
+  margin: 16px 0 16px 0 !important;
+  padding: 0 0 0 16px !important;
+  text-align: left;
+  font-style: italic;
+}
+
+blockquote > cite {
+  display: block;
+  margin: 16px 0 16px 0 !important;
+}
+
+/**
+ * index
+ **/
+
+.article-title {
+  font-size: var(--default-font-size);
+  margin: 0;
+}
+
+.article-link {
+  color: var(--default-fg);
+  text-decoration: none;
+}
+
+.article-link:visited {
+  color: var(--default-fg);
+  text-decoration: none;
+}
+
+.article-link:hover {
+  color: var(--active-fg);
+  text-decoration: none;
+}
+
+/**
+ * page
+ **/
+
+.page-header {
+  margin-bottom: 32px;
+}
+
+.page-published {
+  font-size: var(--small-font-size);
+}
+
+.page-title {
+  font-size: var(--big-font-size);
+  margin: 0;
+  margin-bottom: 32px;
+}
+
+.page-content {
+  padding-bottom: 150px; /* Add some extra spacing for pages */
+}
+
+/**
+ * tags
+ **/
+
+.tags .tag,
+.categories .category {
+  margin-bottom: 8px;
+}
+
+.tag,
+.category {
+  margin-right: 8px;
+}
+
+/**
+ * misc
+ **/
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: var(--default-fb);
+  background: var(--select-bg);
+}
+
+::selection {
+  color: var(--default-fb);
+  background: var(--select-bg);
+}
+
+/**
+ * BOOTSTRAP
+**/
+
+.navbar {
+  background-color: var(--bar-bg);
+}
+
+.navbar-toggler {
+  color: var(--border-fg);
+  border: 0;
+}
+
+.navbar-toggler:focus {
+  border: 0;
+  box-shadow: none;
+}
+
+.navbar-toggler:hover {
+  color: var(--active-fg);
+  border: 0;
+  box-shadow: none;
+}
+
+.navbar-toggle-icon {
+  font-size: var(--default-font-size);
+}
+
+.nav-link {
+  color: var(--default-fg);
+  text-decoration: none;
+}
+
+.nav-link.active {
+  color: var(--active-fg) !important;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--active-fg);
+  text-decoration: none;
+}
