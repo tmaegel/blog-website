@@ -1,6 +1,6 @@
 AUTHOR = "Toni Mägel"
 SITENAME = "tonimaegel.de"
-SITEURL = "https://tmaegel.github.io/blog-website/"
+SITEURL = "https://tmaegel.github.io/blog-website"
 
 PATH = "content"
 

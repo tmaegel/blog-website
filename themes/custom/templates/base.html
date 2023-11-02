@@ -75,7 +75,7 @@
                 {% for title, link in MENUITEMS %}
                     <li>
                         <a class="{% if link.endswith(output_file) %}active{% endif %}"
-                           href="{{ link }}">{{ title|upper }}</a>
+                           href="{{ SITEURL }}/{{ link }}">{{ title|upper }}</a>
                     </li>
                 {% endfor %}
                 {% if DISPLAY_CATEGORIES_ON_MENU %}
