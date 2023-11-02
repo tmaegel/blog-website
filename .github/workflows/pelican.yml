@@ -4,6 +4,7 @@ name: Pelican deployment
 
 env:
   PELICAN_CONTENT_DIR: content
+  PELICAN_BUILD_DIR: build
   PELICAN_CONFIG_FILE: publishconf.py
 
 on:
@@ -33,10 +34,10 @@ jobs:
 
       - name: Build with pelican
         run: |
-          pelican $PELICAN_CONTENT_DIR -s $PELICAN_CONFIG_FILE
+          pelican $PELICAN_CONTENT_DIR -o $PELICAN_BUILD_DIR -s $PELICAN_CONFIG_FILE
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: output
+          folder: build
           branch: gh-pages
