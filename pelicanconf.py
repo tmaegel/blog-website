@@ -41,7 +41,7 @@ MENUITEMS = (
 
 DEFAULT_PAGINATION = 10
 
-OUTPUT_PATH = "root/"
+OUTPUT_PATH = "docs/"
 
 PLUGIN_PATH = ["plugins"]
 PLUGINS = ["better_codeblock_line_numbering_fork"]
