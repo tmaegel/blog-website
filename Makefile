@@ -1,6 +1,6 @@
 PY?=
 PELICAN?=pelican
-PELICANOPTS=
+PELICANOPTS=--extra-settings SITEURL='"/"'
 
 BASEDIR=$(CURDIR)
 INPUTDIR=$(BASEDIR)/content
