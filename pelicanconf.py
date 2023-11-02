@@ -38,7 +38,7 @@ MENUITEMS = (
 
 DEFAULT_PAGINATION = 2
 
-PLUGIN_PATH = ["plugins"]
+PLUGIN_PATHS = ["plugins"]
 PLUGINS = ["better_codeblock_line_numbering_fork"]
 
 MARKDOWN = {
