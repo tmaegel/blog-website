@@ -2,6 +2,10 @@
 
 name: Pelican deployment
 
+env:
+  PELICAN_CONTENT_DIR: content
+  PELICAN_CONFIG_FILE: publishconf.py
+
 on:
   push:
     branches:
@@ -11,7 +15,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
       - uses: actions/checkout@v2
-      - uses: nelsonjchen/gh-pages-pelican-action@0.1.10
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Prepare python environment
+        run: |
+          pip install --upgrade pip
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+      - name: Build with pelican
+        run: |
+          pelican $PELICAN_CONTENT_DIR -s $PELICAN_CONFIG_FILE
