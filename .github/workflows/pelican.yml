@@ -1,6 +1,6 @@
 ---
 
-name: Deploy
+name: Pelican deployment
 
 on:
   push:
@@ -12,9 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: 'true'
-      - uses: rehanhaider/pelican-to-github-pages@v1.2.0
+      - uses: nelsonjchen/gh-pages-pelican-action@0.1.10
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          # GH_PAGES_CNAME: ${{secrets.DOMAIN_CNAME}}
