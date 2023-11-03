@@ -1,5 +1,5 @@
 AUTHOR = "Toni Mägel"
-SITENAME = "tonimaegel.de"
+SITENAME = "tnmgl.de"
 SITEURL = "https://tmaegel.github.io/blog-website"
 
 PATH = "content"
@@ -37,8 +37,8 @@ GITHUB_URL = "https://github.com/tmaegel/"
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = True
 MENUITEMS = (
-    ("Posts", "/index.html"),
-    ("Tags", "/tags.html"),
+    ("Posts", "index.html"),
+    ("Tags", "tags.html"),
 )
 
 DEFAULT_PAGINATION = 2
