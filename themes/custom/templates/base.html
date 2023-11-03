@@ -11,9 +11,10 @@
             <meta charset="utf-8" />
             <meta name="generator" content="Pelican" />
             <meta name="viewport" content="width=device-width, initial-scale=1">
+            <script src="https://kit.fontawesome.com/fdfb028efb.js"
+                    crossorigin="anonymous"></script>
             <link href="{{ SITEURL }}/theme/css/pico.min.css" rel="stylesheet">
-            <link href="{{ SITEURL }}/theme/css/font-awesome.min.css" rel="stylesheet">
-            <link href="{{ SITEURL }}/theme/css/style-dark.css" rel="stylesheet">
+            <link href="{{ SITEURL }}/theme/css/style.css" rel="stylesheet">
             <link href="{{ SITEURL }}/theme/css/pygment.css" rel="stylesheet">
             {% if FEED_ALL_ATOM %}
                 <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}"
@@ -96,11 +97,9 @@
             </ul>
             <ul>
                 <li>
-                    {% for icon, link in SOCIAL %}
-                        <a href="{{ link }}" class="secondary">
-                            <i class="fa fa-{{ icon }} fa-2x" aria-hidden="true"></i>
-                        </a>
-                    {% endfor %}
+                    <a href="javascript:toggleTheme();">
+                        <i class="fa-solid fa-circle-half-stroke fa-lg" aria-hidden="true"></i>
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -108,6 +107,8 @@
             {% block content %}{% endblock %}
         </main>
         <footer>
+            {% block footer %}{% endblock %}
         </footer>
     </body>
+    <script src="{{ SITEURL }}/theme/js/toggle_theme.js"></script>
 </html>

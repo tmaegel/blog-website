@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block html_lang %}{{ page.lang }}{% endblock %}
+{% block title %}{{ SITENAME }} - {{ page.title|striptags }}{% endblock %}
+{% block head %}
+    {{ super() }}
+    {% import 'translations.html' as translations with context %}
+    {% if translations.entry_hreflang(page) %}{{ translations.entry_hreflang(page) }}{% endif %}
+{% endblock %}
+{% block content %}
+    <header class="align-center">
+        {% import 'translations.html' as translations with context %}
+        {{ translations.translations_for(page) }}
+        <h3>{{ page.title }}</h3>
+    </header>
+    <section>
+        {{ page.content }}
+    </section>
+    <section class="align-center">
+        <nav class="container">
+            <ul>
+                <li></li>
+            </ul>
+            <ul>
+                <li>
+                    {% for icon, link in SOCIAL %}
+                        <a href="{{ link }}" class="secondary" style="margin: 0px 2px;">
+                            <i class="{{ icon }} fa-2x" aria-hidden="true"></i>
+                        </a>
+                    {% endfor %}
+                </li>
+            </ul>
+            <ul>
+                <li></li>
+            </ul>
+        </nav>
+    </section>
+{% endblock %}

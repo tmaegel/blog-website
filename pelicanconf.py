@@ -25,7 +25,12 @@ AUTHOR_FEED_RSS = None
 LINKS = ()
 
 # Social widget
-SOCIAL = (("github", "https://github.com/tmaegel/"),)
+SOCIAL = (
+    ("fa-brands fa-github", "https://github.com/tmaegel/"),
+    ("fa-brands fa-mastodon", "https://social.dev-wiki.de/@tmaegel"),
+    ("fa-brands fa-linkedin-in", "https://www.linkedin.com/in/toni-maegel/"),
+    ("fa-brands fa-xing", "https://www.xing.com/profile/Toni_Maegel/cv"),
+)
 
 GITHUB_URL = "https://github.com/tmaegel/"
 
@@ -40,6 +45,8 @@ DEFAULT_PAGINATION = 2
 
 PLUGIN_PATHS = ["plugins"]
 PLUGINS = ["better_codeblock_line_numbering_fork"]
+
+STATIC_PATHS = ["images"]
 
 MARKDOWN = {
     "extension_configs": {
