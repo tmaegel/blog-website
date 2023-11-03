@@ -14,18 +14,16 @@ DEFAULT_LANG = "en"
 # Can be useful in development, but set to False when you're ready to publish
 # RELATIVE_URLS = True
 
-# Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
+FEED_DOMAIN = SITEURL
+FEED_ALL_ATOM = "feeds/all.atom.xml"
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
-LINKS = ()
-
 # Social widget
-SOCIAL = (
+LINKS = (
+    ("fa-solid fa-rss", "/feeds/all.atom.xml"),
     ("fa-brands fa-github", "https://github.com/tmaegel/"),
     ("fa-brands fa-mastodon", "https://social.dev-wiki.de/@tmaegel"),
     ("fa-brands fa-linkedin-in", "https://www.linkedin.com/in/toni-maegel/"),
