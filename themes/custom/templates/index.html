@@ -13,7 +13,9 @@
                     <h4>
                         {% if article.tags %}
                             <div>
-                                {% for tag in article.tags %}<a class="secondary tags" href="{{ SITEURL }}/{{ tag.url }}">#{{ tag }}</a>{% endfor %}
+                                {% for tag in article.tags|sort %}
+                                    <a class="secondary tags" href="{{ SITEURL }}/{{ tag.url }}">#{{ tag }}</a>
+                                {% endfor %}
                             </div>
                         {% endif %}
                     </h4>
