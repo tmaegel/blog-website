@@ -23,7 +23,7 @@ AUTHOR_FEED_RSS = None
 
 # Social widget
 LINKS = (
-    ("fa-solid fa-rss", "/feeds/all.atom.xml"),
+    ("fa-solid fa-rss", f"{SITEURL}/{FEED_ALL_ATOM}"),
     ("fa-brands fa-github", "https://github.com/tmaegel/"),
     ("fa-brands fa-mastodon", "https://social.dev-wiki.de/@tmaegel"),
     ("fa-brands fa-linkedin-in", "https://www.linkedin.com/in/toni-maegel/"),
