@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"
+      data-theme="dark">
+    <head>
+                <title>
+tnmgl.de - Deploy a Pelican site with GitHub Actions to GitHub Pages            </title>
+            <meta charset="utf-8" />
+            <meta name="generator" content="Pelican" />
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <script src="https://kit.fontawesome.com/fdfb028efb.js"
+                    crossorigin="anonymous"></script>
+            <link href="https://tmaegel.github.io/blog-website/theme/css/pico.min.css" rel="stylesheet">
+            <link href="https://tmaegel.github.io/blog-website/theme/css/style.css" rel="stylesheet">
+            <link href="https://tmaegel.github.io/blog-website/theme/css/pygment.css" rel="stylesheet">
+
+  <meta name="tags" content="Pelican" /><meta name="tags" content="GithubActions" /><meta name="tags" content="GitHubPages" />    </head>
+    <body>
+        <nav class="container-fluid">
+            <ul>
+                <li></li>
+            </ul>
+            <ul>
+                    <li>
+                        <a class=""
+                           href="https://tmaegel.github.io/blog-website/index.html">POSTS</a>
+                    </li>
+                    <li>
+                        <a class=""
+                           href="https://tmaegel.github.io/blog-website/tags.html">TAGS</a>
+                    </li>
+                        <li>
+                            <a class=""
+                               href="https://tmaegel.github.io/blog-website/pages/projects.html">PROJECTS</a>
+                        </li>
+                        <li>
+                            <a class=""
+                               href="https://tmaegel.github.io/blog-website/pages/about.html">ABOUT</a>
+                        </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="javascript:toggleTheme();" class="secondary">
+                        <i class="fa-solid fa-circle-half-stroke fa-lg" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <main class="container">
+    <header>
+          
+        <div class="headings">
+            <h3>Deploy a Pelican site with GitHub Actions to GitHub Pages</h3>
+            <h4>
+                <time datetime="2023-11-03T09:49:00+01:00">
+                    Friday, 03. November 2023
+                </time>
+            </h4>
+        </div>
+    </header>
+    <section>
+        <p>This blog is powered by <a href="https://getpelican.com/">Pelian</a>. It is a static site generator that requires no database or server-side logic and generates your website based on the content which is written in <code>reStructuredText</code> or <code>Markdown</code>.</p>
+<p>I host this site with GitHub Pages. So I though its the best choice to automatically deploy my changes (e.g. content or theme/template) and update my site as well on GitHub Pages by using GitHub Actions.</p>
+<p>My workflow based on the following GitHub Actions:</p>
+<ul>
+<li><a href="https://github.com/actions/checkout">actions/checkout</a></li>
+<li><a href="https://github.com/actions/setup-python">actions/setup-python</a></li>
+<li><a href="https://github.com/JamesIves/github-pages-deploy-action">JamesIves/github-pages-deploy-action</a></li>
+</ul>
+<p>In the first step I checkout my GitHub repository with <code>actions/checkout</code> which holds my content and theme data of this site. Afterwards I prepare the python environment to install the needed python dependencies (e.g. <code>pelican</code>) to build my site based on the content and the templates. Finally I use the Github action <code>JamesIves/github-pages-deploy-action</code> to deploy the build results to GitHub Pages. This Actions takes the build results of <code>pelican</code>. In my case from the directory <code>build</code> and commit/push these to the corresponding branch (e.g. <code>gh-pages</code>).</p>
+<p>This results in the following GitHub Actions workflow.</p>
+<div class="highlight"><pre>
+<code>
+<span class="code-line"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nt">env</span><span class="p">:</span></span>
+<span class="code-line"><span class="w">  </span><span class="nt">PELICAN_CONTENT_DIR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">content</span></span>
+<span class="code-line"><span class="w">  </span><span class="nt">PELICAN_BUILD_DIR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span></span>
+<span class="code-line"><span class="w">  </span><span class="nt">PELICAN_CONFIG_FILE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pelicanconf.py</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nt">on</span><span class="p">:</span></span>
+<span class="code-line"><span class="w">  </span><span class="nt">push</span><span class="p">:</span></span>
+<span class="code-line"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span></span>
+<span class="code-line"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nt">permissions</span><span class="p">:</span></span>
+<span class="code-line"><span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="nt">jobs</span><span class="p">:</span></span>
+<span class="code-line"><span class="w">  </span><span class="nt">build</span><span class="p">:</span></span>
+<span class="code-line"><span class="w">    </span><span class="nt">concurrency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci-${{ github.ref }}</span></span>
+<span class="code-line"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span></span>
+<span class="code-line"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span></span>
+<span class="code-line"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span></span>
+<span class="code-line"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup python</span></span>
+<span class="code-line"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v4</span></span>
+<span class="code-line"><span class="w">        </span><span class="nt">with</span><span class="p">:</span></span>
+<span class="code-line"><span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.11&quot;</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span></span>
+<span class="code-line"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span></span>
+<span class="code-line"><span class="w">          </span><span class="no">pip install --upgrade pip</span></span>
+<span class="code-line"><span class="w">          </span><span class="no">pip install -r requirements.txt</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build with pelican</span></span>
+<span class="code-line"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pelican $PELICAN_CONTENT_DIR -o $PELICAN_BUILD_DIR -s $PELICAN_CONFIG_FILE</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy</span></span>
+<span class="code-line"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JamesIves/github-pages-deploy-action@v4</span></span>
+<span class="code-line"><span class="w">        </span><span class="nt">with</span><span class="p">:</span></span>
+<span class="code-line"><span class="w">          </span><span class="nt">folder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.PELICAN_BUILD_DIR }}</span></span>
+<span class="code-line"><span class="w">          </span><span class="nt">branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span></span>
+</code>
+</pre></div>
+    </section>
+        <div>
+                <a class="secondary tags" href="https://tmaegel.github.io/blog-website/tag/githubactions.html">#GithubActions</a>
+                <a class="secondary tags" href="https://tmaegel.github.io/blog-website/tag/githubpages.html">#GitHubPages</a>
+                <a class="secondary tags" href="https://tmaegel.github.io/blog-website/tag/pelican.html">#Pelican</a>
+        </div>
+        </main>
+        <footer class="container">
+            <span>© 2023 Toni Mägel · Website powered by <a href="https://getpelican.com/">Pelican</a></span>
+        </footer>
+    </body>
+    <script src="https://tmaegel.github.io/blog-website/theme/js/toggle_theme.js"></script>
+</html>
