@@ -46,6 +46,16 @@ blockquote > p {
   margin: 0;
 }
 
+footer {
+  color: var(--muted-color);
+  font-size: 0.7em;
+  padding: 8px !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
 .margin-t-32 {
   margin-top: 32px;
 }
