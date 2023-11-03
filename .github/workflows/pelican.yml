@@ -39,5 +39,5 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: "{{ env.PELICAN_BUILD_DIR }}"
+          folder: ${{ env.PELICAN_BUILD_DIR }}
           branch: gh-pages
