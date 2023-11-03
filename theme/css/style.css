@@ -11,10 +11,13 @@
   --cyan: #56b6c2;
 }
 
+[data-theme="light"] {
+  --background-color: #fff;
+  --primary-focus: var(--secondary-focus);
+}
+
 [data-theme="dark"] {
   --background-color: #11191f;
-  --primary: #abb2bf;
-  --primary-hover: #ffffff;
   --primary-focus: var(--secondary-focus);
 }
 
