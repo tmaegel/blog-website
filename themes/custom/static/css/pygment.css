@@ -1,5 +1,4 @@
 code {
-  overflow: auto;
   /*
    * This uses `white-space: pre-wrap` to get elements within <pre> tags to wrap.
    * Python, for code chunks within three backticks (```), doesn't wordwrap code lines by default,
