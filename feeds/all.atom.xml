@@ -54,4 +54,6 @@
 &lt;span class="code-line"&gt;&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nt"&gt;folder&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;${{ env.PELICAN_BUILD_DIR }}&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nt"&gt;branch&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;gh-pages&lt;/span&gt;&lt;/span&gt;
 &lt;/code&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="DevOps"></category><category term="Pelican"></category><category term="GitHub"></category><category term="GithubActions"></category><category term="GitHubPages"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Update (21.11.2023):&lt;/strong&gt; With version 4.9.0 Pelikan comes with a &lt;a href="https://docs.getpelican.com/en/4.9.1/tips.html#publishing-to-github-pages-using-a-custom-github-actions-workflow"&gt;custom GitHub Actions workflow&lt;/a&gt;.&lt;/p&gt;</content><category term="DevOps"></category><category term="Pelican"></category><category term="GitHub"></category><category term="GithubActions"></category><category term="GitHubPages"></category></entry></feed>
